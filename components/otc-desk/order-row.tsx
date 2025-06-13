@@ -38,10 +38,9 @@ export default function OrderRow({ order, onFillOrder }: OrderRowProps) {
             <div className="w-4 h-4 flex items-center justify-center text-brand-text">{order.offeredAsset.logo}</div>
           )}
           <div>
-            <div className="text-brand-text">
+            <div className="text-brand-text font-bold">
               {order.offeredAmount.toLocaleString()} {order.offeredAsset.symbol}
             </div>
-            <div className="text-xs text-brand-textNeutral">Bal: {order.userOfferedAssetBalance.toLocaleString()}</div>
           </div>
         </div>
       </TableCell>
@@ -50,7 +49,7 @@ export default function OrderRow({ order, onFillOrder }: OrderRowProps) {
           {order.desiredAsset.logo && (
             <div className="w-4 h-4 flex items-center justify-center text-brand-text">{order.desiredAsset.logo}</div>
           )}
-          <span className="text-brand-text">
+          <span className="text-brand-text font-bold">
             {order.desiredAmount.toLocaleString()} {order.desiredAsset.symbol}
           </span>
         </div>
@@ -72,18 +71,10 @@ export default function OrderRow({ order, onFillOrder }: OrderRowProps) {
           />
           <span className="text-xs font-mono text-brand-textNeutral">{order.progressPercent}%</span>
         </div>
-        {order.isHighDemand && (
-          <Badge
-            variant="outline"
-            className="mt-1 border-brand-accent/70 text-brand-accent text-[10px] py-0 px-1 font-normal bg-brand-accent/10"
-          >
-            <Tag className="w-2.5 h-2.5 mr-0.5" /> High Demand
-          </Badge>
-        )}
       </TableCell>
       <TableCell className="py-2.5 text-right">
         <Button
-          size="xs"
+          size="sm"
           className="bg-brand-accent hover:bg-opacity-80 text-brand-accentText font-semibold h-7 px-2 text-xs"
           onClick={() => onFillOrder(order.id)}
         >

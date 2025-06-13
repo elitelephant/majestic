@@ -19,7 +19,6 @@ export interface Order {
   marketDeviationStatus: MarketDeviationStatus
   progressPercent: number // 0-100
   isPartiallyFillable: boolean
-  isHighDemand: boolean
   timestamp: number
 }
 
@@ -32,8 +31,8 @@ export interface Trade extends Order {
 import { Bitcoin, CircleDollarSign, Package } from "lucide-react"
 
 export const MOCK_ASSETS: Asset[] = [
-  { id: "usdc", symbol: "USDC", name: "USD Coin", logo: <CircleDollarSign className="w-5 h-5" /> },
-  { id: "mnt", symbol: "MNT", name: "Mantle", logo: <Package className="w-5 h-5" /> },
-  { id: "eth", symbol: "ETH", name: "Ethereum", logo: <Bitcoin className="w-5 h-5" /> }, // Placeholder generic coin
-  { id: "wbtc", symbol: "WBTC", name: "Wrapped Bitcoin", logo: <Bitcoin className="w-5 h-5" /> },
+  { id: "usdc", symbol: "USDC", name: "USD Coin", logo: undefined },
+  { id: "mnt", symbol: "MNT", name: "Mantle", logo: undefined },
+  { id: "eth", symbol: "ETH", name: "Ethereum", logo: undefined },
+  { id: "wbtc", symbol: "WBTC", name: "Wrapped Bitcoin", logo: undefined },
 ]

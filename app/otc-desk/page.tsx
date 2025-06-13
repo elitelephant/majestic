@@ -7,17 +7,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 export default function OtcDeskPage() {
   return (
     <div
-      className="h-screen flex flex-col font-sans"
-      style={{
-        background: `linear-gradient(180deg, var(--brand-backgroundGradientFrom) 0%, var(--brand-backgroundGradientTo) 100%)`,
-      }}
+      className="min-h-screen flex flex-col font-sans bg-gradient-to-b from-[var(--brand-backgroundGradientFrom)] to-[var(--brand-backgroundGradientTo)]"
     >
       {/* No separate overlay needed if component backgrounds provide enough contrast */}
-      <div className="relative z-10 flex flex-col h-screen text-brand-text">
+      <div className="relative z-10 flex flex-col min-h-screen text-brand-text">
         <OtcHeader />
 
         <div className="flex-1 flex items-center justify-center p-[5vh]">
-          <main className="w-full h-full bg-brand-secondary/60 backdrop-blur-xl rounded-xl shadow-2xl flex flex-col overflow-hidden border border-brand-muted/30">
+          <main role="main" className="w-full h-full bg-brand-secondary/60 backdrop-blur-xl rounded-xl shadow-2xl flex flex-col overflow-hidden border border-brand-muted/30">
             <div className="flex flex-col lg:flex-row flex-1 gap-4 md:gap-6 p-3 md:p-4 lg:p-5 overflow-hidden">
               {/* Left Panel (Order Book / Trade History) */}
               <div className="lg:w-[70%] flex flex-col overflow-hidden">
@@ -53,7 +50,7 @@ export default function OtcDeskPage() {
           </main>
         </div>
 
-        <footer className="text-center p-3 text-xs text-brand-textNeutral border-t border-brand-secondary/50 shrink-0">
+        <footer role="contentinfo" className="text-center p-3 text-xs text-brand-textNeutral border-t border-brand-secondary/50 shrink-0">
           Majestic Desk © {new Date().getFullYear()}
         </footer>
       </div>

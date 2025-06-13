@@ -24,7 +24,6 @@ const MOCK_ORDERS: Order[] = [
     marketDeviationStatus: "favorable",
     progressPercent: 0,
     isPartiallyFillable: true,
-    isHighDemand: true,
     timestamp: Date.now() - 100000,
   },
   {
@@ -38,7 +37,6 @@ const MOCK_ORDERS: Order[] = [
     marketDeviationStatus: "unfavorable",
     progressPercent: 25,
     isPartiallyFillable: true,
-    isHighDemand: false,
     timestamp: Date.now() - 200000,
   },
   {
@@ -52,7 +50,6 @@ const MOCK_ORDERS: Order[] = [
     marketDeviationStatus: "neutral",
     progressPercent: 75,
     isPartiallyFillable: false,
-    isHighDemand: false,
     timestamp: Date.now() - 50000,
   },
   {
@@ -66,7 +63,6 @@ const MOCK_ORDERS: Order[] = [
     marketDeviationStatus: "neutral",
     progressPercent: 10,
     isPartiallyFillable: true,
-    isHighDemand: false,
     timestamp: Date.now() - 300000,
   },
   {
@@ -80,7 +76,6 @@ const MOCK_ORDERS: Order[] = [
     marketDeviationStatus: "favorable",
     progressPercent: 50,
     isPartiallyFillable: true,
-    isHighDemand: true,
     timestamp: Date.now() - 400000,
   },
 ]
@@ -89,7 +84,6 @@ export default function OrderBook() {
   const [orders, setOrders] = useState<Order[]>(MOCK_ORDERS) // MOCK_ORDERS defined as before
   const [searchTerm, setSearchTerm] = useState("")
   const [showPartiallyFillableOnly, setShowPartiallyFillableOnly] = useState(true)
-  const [sortBy, setSortBy] = useState("recency")
 
   const handleFillOrder = (orderId: string, amountPercent?: number) => {
     console.log(`Attempting to fill order ${orderId}` + (amountPercent ? ` for ${amountPercent}%` : ""))
@@ -119,22 +113,8 @@ export default function OrderBook() {
           `${order.desiredAsset.symbol}/${order.offeredAsset.symbol}`.toLowerCase().includes(lowerSearchTerm),
       )
     }
-    return result.sort((a, b) => {
-      switch (sortBy) {
-        case "price_deviation":
-          const deviationOrder = { favorable: 0, neutral: 1, unfavorable: 2 }
-          return deviationOrder[a.marketDeviationStatus] - deviationOrder[b.marketDeviationStatus]
-        case "size":
-          return (
-            b.offeredAmount * (MOCK_ASSETS.find((as) => as.id === b.offeredAsset.id)?.id === "usdc" ? 1 : 2500) -
-            a.offeredAmount * (MOCK_ASSETS.find((as) => as.id === a.offeredAsset.id)?.id === "usdc" ? 1 : 2500)
-          )
-        case "recency":
-        default:
-          return b.timestamp - a.timestamp
-      }
-    })
-  }, [orders, searchTerm, showPartiallyFillableOnly, sortBy])
+    return result.sort((a, b) => b.timestamp - a.timestamp)
+  }, [orders, searchTerm, showPartiallyFillableOnly])
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
@@ -187,7 +167,7 @@ export default function OrderBook() {
 
   function renderFilters() {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 items-end">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
         <div className="relative">
           <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-textNeutral" />
           <Input
@@ -198,31 +178,7 @@ export default function OrderBook() {
             className="pl-8 text-sm bg-brand-inputBackground border-brand-muted/70 focus:border-brand-primary text-brand-text placeholder:text-brand-textNeutral h-9"
           />
         </div>
-        <div>
-          <Label htmlFor="sort-by" className="text-xs text-brand-textNeutral mb-1 block sr-only">
-            Sort By
-          </Label>
-          <Select value={sortBy} onValueChange={setSortBy}>
-            <SelectTrigger
-              id="sort-by"
-              className="text-sm bg-brand-inputBackground border-brand-muted/70 text-brand-text data-[placeholder]:text-brand-textNeutral focus:ring-brand-primary h-9"
-            >
-              <SelectValue placeholder="Sort by..." />
-            </SelectTrigger>
-            <SelectContent className="bg-brand-secondary border-brand-muted/70 text-brand-text">
-              <SelectItem value="recency" className="hover:bg-brand-primary/70 focus:bg-brand-primary">
-                Recency
-              </SelectItem>
-              <SelectItem value="price_deviation" className="hover:bg-brand-primary/70 focus:bg-brand-primary">
-                Price Deviation
-              </SelectItem>
-              <SelectItem value="size" className="hover:bg-brand-primary/70 focus:bg-brand-primary">
-                Order Size (Value)
-              </SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="flex items-center space-x-2 pt-2 sm:pt-0 sm:justify-self-end lg:justify-self-start">
+        <div className="flex items-center space-x-2 pt-2 sm:pt-0 sm:justify-self-end">
           <Switch
             id="partially-fillable"
             checked={showPartiallyFillableOnly}
