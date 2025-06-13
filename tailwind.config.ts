@@ -19,56 +19,51 @@ module.exports = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))", // Fallback, brand.background will be primary
-        foreground: "hsl(var(--foreground))", // Fallback, brand.text will be primary
+        border: "#E5E7EB", // light gray
+        input: "#F3F4F6", // very light gray
+        ring: "#6366F1", // blue ring for focus
+        background: "#F9FAFB", // light neutral background
+        foreground: "#1F2937", // dark neutral text
         primary: {
-          // shadcn primary, can align with brand.primary
-          DEFAULT: "#9B50B9", // hsl(283, 49%, 52%)
-          foreground: "#FFFFFF", // White text on primary
+          DEFAULT: "#6366F1", // Indigo 500
+          foreground: "#FFFFFF",
         },
         secondary: {
-          // shadcn secondary, can align with brand.secondary
-          DEFAULT: "#4A148C", // hsl(279, 70%, 31%)
-          foreground: "#FFFFFF", // White text on secondary
+          DEFAULT: "#E5E7EB", // Gray 200
+          foreground: "#1F2937",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))", // Standard destructive
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#EF4444", // Red 500
+          foreground: "#FFFFFF",
         },
         muted: {
-          // shadcn muted, can align with brand.muted
-          DEFAULT: "#6A1B9A", // hsl(283, 69%, 35%)
-          foreground: "#E1BEE7", // Lighter purple text on muted
+          DEFAULT: "#F3F4F6", // Gray 100
+          foreground: "#6B7280", // Gray 500
         },
         accent: {
-          // shadcn accent, can align with brand.accent
-          DEFAULT: "#C77DFF", // hsl(277, 100%, 74%)
-          foreground: "#1A0F2B", // Dark text on accent
+          DEFAULT: "#6366F1", // Indigo 500
+          foreground: "#FFFFFF",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#1F2937",
         },
         card: {
-          // shadcn card, can align with brand.secondary
-          DEFAULT: "#4A148C", // hsl(279, 70%, 31%)
-          foreground: "#FFFFFF", // White text on card
+          DEFAULT: "#FFFFFF",
+          foreground: "#1F2937",
         },
         brand: {
-          backgroundGradientFrom: "#311B92", // Darker purple for gradient start
-          backgroundGradientTo: "#1A0F2B", // Very dark purple/black for gradient end
-          text: "#FFFFFF", // White for primary text
-          textNeutral: "#E1BEE7", // Light lavender for neutral/secondary text (like placeholder)
-          primary: "#9B50B9", // Main purple
-          secondary: "#4A148C", // Darker purple for card backgrounds, headers
-          accent: "#C77DFF", // Lighter, vibrant purple for interactive elements
-          accentText: "#1A0F2B", // Dark text for on accent elements for contrast
-          muted: "#6A1B9A", // Mid-dark purple for borders, less important elements
-          inputBackground: "#311B92", // Dark purple for input backgrounds
-          danger: "#EF5350", // A slightly softer red
+          backgroundGradientFrom: "#F3F4F6", // light gray
+          backgroundGradientTo: "#E5E7EB", // slightly darker gray
+          text: "#1F2937", // dark neutral
+          textNeutral: "#6B7280", // gray for secondary text
+          primary: "#6366F1", // Indigo 500
+          secondary: "#E5E7EB", // Gray 200
+          accent: "#6366F1", // Indigo 500
+          accentText: "#FFFFFF",
+          muted: "#F3F4F6", // Gray 100
+          inputBackground: "#F3F4F6", // Gray 100
+          danger: "#EF4444", // Red 500
         },
       },
       borderRadius: {
@@ -91,9 +86,9 @@ module.exports = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: ["Inter", "var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["Playfair Display", "serif"], // Para títulos y encabezados
-        mono: ["Roboto Mono", "var(--font-mono)", "monospace"], // Para datos numéricos
+        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["Playfair Display", "serif"],
+        mono: ["Roboto Mono", "monospace"],
       },
     },
   },
