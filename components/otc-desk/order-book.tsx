@@ -117,34 +117,34 @@ export default function OrderBook() {
   }, [orders, searchTerm, showPartiallyFillableOnly])
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col w-full">
       <Accordion
         type="single"
         collapsible
-        className="lg:hidden bg-brand-secondary/80 backdrop-blur-md rounded-md mb-3 border border-brand-muted/30"
+        className="lg:hidden bg-secondary rounded-md mb-3 border border-border"
       >
         <AccordionItem value="filters" className="border-b-0">
-          <AccordionTrigger className="px-4 py-3 hover:no-underline text-sm text-brand-text">
+          <AccordionTrigger className="px-4 py-3 hover:no-underline text-sm text-foreground">
             <div className="flex items-center gap-2">
               <ListFilter className="w-4 h-4" /> Filters & Sort
             </div>
           </AccordionTrigger>
-          <AccordionContent className="p-4 border-t border-brand-muted/30">{renderFilters()}</AccordionContent>
+          <AccordionContent className="p-4 border-t border-border">{renderFilters()}</AccordionContent>
         </AccordionItem>
       </Accordion>
-      <div className="hidden lg:block bg-brand-secondary/80 backdrop-blur-md p-3 rounded-md mb-3 border border-brand-muted/30">
+      <div className="hidden lg:block bg-secondary p-3 rounded-md mb-3 border border-border">
         {renderFilters()}
       </div>
 
-      <div className="flex-1 bg-brand-secondary/80 backdrop-blur-md rounded-md overflow-y-auto border border-brand-muted/30">
+      <div className="bg-secondary rounded-md border border-border">
         <Table>
-          <TableHeader className="sticky top-0 bg-brand-secondary/90 backdrop-blur-lg z-10">
-            <TableRow className="border-b border-brand-muted/50">
-              <TableHead className="text-brand-textNeutral font-semibold py-2.5 text-xs">Offered</TableHead>
-              <TableHead className="text-brand-textNeutral font-semibold text-xs">Desired</TableHead>
-              <TableHead className="text-brand-textNeutral font-semibold text-xs">Effective Price</TableHead>
-              <TableHead className="text-brand-textNeutral font-semibold text-xs">Progress</TableHead>
-              <TableHead className="text-right text-brand-textNeutral font-semibold text-xs">Action</TableHead>
+          <TableHeader className="sticky top-0 bg-secondary z-10">
+            <TableRow className="border-b border-border">
+              <TableHead className="text-muted-foreground font-semibold py-2.5 text-xs">Offered</TableHead>
+              <TableHead className="text-muted-foreground font-semibold text-xs">Desired</TableHead>
+              <TableHead className="text-muted-foreground font-semibold text-xs">Effective Price</TableHead>
+              <TableHead className="text-muted-foreground font-semibold text-xs">Progress</TableHead>
+              <TableHead className="text-right text-muted-foreground font-semibold text-xs">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -154,7 +154,7 @@ export default function OrderBook() {
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={5} className="text-center py-10 text-brand-textNeutral">
+                <TableCell colSpan={5} className="text-center py-10 text-muted-foreground">
                   No orders match your criteria.
                 </TableCell>
               </TableRow>
@@ -169,7 +169,7 @@ export default function OrderBook() {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
         <div className="relative">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-textNeutral" />
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             type="text"
             placeholder="Search MNT/USDC..."

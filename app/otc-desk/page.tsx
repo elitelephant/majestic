@@ -13,13 +13,13 @@ export default function OtcDeskPage() {
       <div className="relative z-10 flex flex-col min-h-screen text-brand-text">
         <OtcHeader />
 
-        <div className="flex-1 flex items-center justify-center p-8 bg-background">
-          <main role="main" className="w-full max-w-7xl h-full flex flex-col gap-8">
-            <div className="flex flex-col lg:flex-row flex-1 gap-8">
+        <div className="flex items-start justify-center p-8 bg-background min-h-[calc(100vh-80px-40px)]">
+          <main role="main" className="w-full max-w-7xl flex flex-col gap-8">
+            <div className="flex flex-col lg:flex-row gap-8 w-full h-full min-h-[500px]">
               {/* Left Panel (Order Book / Trade History) */}
-              <div className="lg:w-2/3 flex flex-col">
-                <div className="bg-card rounded-xl shadow border p-6 flex-1 flex flex-col">
-                  <Tabs defaultValue="order-book" className="w-full flex flex-col flex-1 overflow-hidden">
+              <div className="lg:w-2/3 w-full flex flex-col h-full">
+                <div className="bg-card rounded-xl shadow border p-6 w-full h-full flex flex-col">
+                  <Tabs defaultValue="order-book" className="w-full flex flex-col">
                     <TabsList className="grid w-full grid-cols-2 bg-muted border border-border rounded-md mb-4">
                       <TabsTrigger
                         value="order-book"
@@ -34,10 +34,10 @@ export default function OtcDeskPage() {
                         Trade History
                       </TabsTrigger>
                     </TabsList>
-                    <TabsContent value="order-book" className="flex-1 overflow-hidden">
+                    <TabsContent value="order-book">
                       <OrderBook />
                     </TabsContent>
-                    <TabsContent value="trade-history" className="flex-1 overflow-hidden">
+                    <TabsContent value="trade-history">
                       <TradeHistory />
                     </TabsContent>
                   </Tabs>
@@ -45,8 +45,8 @@ export default function OtcDeskPage() {
               </div>
 
               {/* Right Panel (Order Placement) */}
-              <div className="lg:w-1/3 flex flex-col">
-                <div className="bg-card rounded-xl shadow border p-6 flex-1 flex flex-col">
+              <div className="lg:w-1/3 w-full flex flex-col mt-8 lg:mt-0 h-full">
+                <div className="bg-card rounded-xl shadow border p-6 w-full h-full flex flex-col">
                   <OrderPlacementForm />
                 </div>
               </div>
