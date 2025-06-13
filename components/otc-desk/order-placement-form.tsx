@@ -49,13 +49,10 @@ export default function OrderPlacementForm() {
     <Card className="bg-card border border-border text-foreground h-full flex flex-col overflow-hidden shadow-lg">
       <CardHeader className="pb-4">
         <CardTitle className="font-serif text-2xl text-foreground">Place New Order</CardTitle>
-        <CardDescription className="text-muted-foreground text-base font-sans">
-          Create a new peer-to-peer trade offer.
-        </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmitOrder} className="flex flex-col flex-1 overflow-hidden">
-        <CardContent className="space-y-6 flex-1 overflow-y-auto py-6 px-6 text-base">
-          <div className="space-y-1.5">
+        <CardContent className="space-y-3 flex-1 overflow-y-auto py-4 px-4 text-base">
+          <div className="space-y-1">
             <Label htmlFor="offer-amount" className="font-semibold text-xs text-foreground">
               You Offer
             </Label>
@@ -109,7 +106,7 @@ export default function OrderPlacementForm() {
             )}
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             <Label htmlFor="receive-amount" className="font-semibold text-xs text-foreground">
               You Receive
             </Label>
@@ -145,29 +142,7 @@ export default function OrderPlacementForm() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-1">
-            <Label htmlFor="partially-fillable-form" className="flex items-center gap-1.5 text-xs text-foreground">
-              Partially Fillable
-              <TooltipProvider>
-                <Tooltip delayDuration={100}>
-                  <TooltipTrigger type="button" onClick={(e) => e.preventDefault()}>
-                    <Info className="w-3.5 h-3.5 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-secondary text-foreground border-border max-w-xs text-xs">
-                    Allows others to fill parts of your order incrementally. Recommended for larger orders.
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </Label>
-            <Switch
-              id="partially-fillable-form"
-              checked={isPartiallyFillable}
-              onCheckedChange={setIsPartiallyFillable}
-              className="data-[state=checked]:bg-accent data-[state=unchecked]:bg-muted"
-            />
-          </div>
-
-          <div className="border-t border-border/50 pt-2.5 space-y-1.5">
+          <div className="border-t border-border/50 pt-2 space-y-1">
             <h4 className="text-xs font-semibold text-muted-foreground">Preview</h4>
             <div className="flex justify-between text-xs">
               <span className="text-muted-foreground">Effective Price:</span>
@@ -179,7 +154,7 @@ export default function OrderPlacementForm() {
             </div>
           </div>
         </CardContent>
-        <CardFooter className="pt-6 pb-6 px-6">
+        <CardFooter className="pt-4 pb-4 px-4">
           <Button
             type="submit"
             className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold h-11 text-base shadow focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
